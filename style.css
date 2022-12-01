@@ -8,6 +8,10 @@
     --fw-dark: 700;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -45,6 +49,7 @@ nav {
 
 nav ul {
     display: flex;
+    flex-wrap: wrap;
     gap: 20px;
 }
 
@@ -151,7 +156,16 @@ nav ul li:hover .hidden {
     margin: 20px 0 40px;
 }
 
-.tab-titles .tab-links {
+.tab-titles {
+    color: var(--secondary);
+    margin-right: 50px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    position: relative;
+}
+
+.tab-links {
     color: var(--secondary);
     margin-right: 50px;
     font-size: 18px;
@@ -335,6 +349,7 @@ nav ul li:hover .hidden {
 
 .contact-right form {
     width: 100%;
+    color: black;
 }
 
 form input, form textarea {
@@ -344,7 +359,7 @@ form input, form textarea {
     background: var(--primary);
     padding: 15px;
     margin: 15px;
-    color: var(--secondary);
+    color: black;
     font-size: 18px;
     border-radius: 6px;
 }
@@ -355,8 +370,13 @@ form button {
     margin-top: 20px;
     cursor: pointer;
     border-radius: 10px;
-    color: var(--primary);
+    color: black;
+    background: var(--primary);
     margin-left: 15px;
+}
+
+::placeholder {
+    color: black;
 }
 
 /*------------------ Auto-Typer -------------------------*/
@@ -376,9 +396,53 @@ form button {
 
 /*-------------------------------- Media  Query -------------------*/
 
-@media only screen and (max-width: 600px;) {
+@media only screen and (max-width: 600px) {
     #header {
-        background-image: none;
-        max-width:600px;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(./images/background-greyscale-resize.png);
+        max-width: 600px;
     }
+    
+    .header-text {
+        margin-top: 100%;
+        font-size: 16px;
+    }
+
+    .header-text h1 {
+        font-size: 30px;
+    }
+
+    .subtitle {
+        font-size: 40px;
+    }
+
+    .about-col-1, .about-col-2 {
+        flex-basis: 100%;
+    }
+
+    .about-col-1 {
+        margin-bottom: 30px;
+    }
+
+    .about-col-2 p{
+        font-size: 16px;
+    }
+
+    .tab-links {
+        font-size: 16px;
+        margin-right: 20px;
+    }
+
+    #portfolio .container p {
+        font-size: 16px;
+    }
+
+    .contact-left, .contact-right {
+        flex-basis: 100%
+    }
+}
+
+#msg {
+    color: #61B752;
+    margin-left: 20px;
+    display: block;
 }

@@ -22,8 +22,8 @@
                 <ul>
                     <li><a href="#home"><span class="hidden">{</span>Home<span class="hidden">}</span></a></li>
                     <li><a href="#about"><span class="hidden">{</span>About<span class="hidden">}</span></a></li>
-                    <li><a href=""><span class="hidden">{</span>Projects<span class="hidden">}</span></a></li>
-                    <li><a href=""><span class="hidden">{</span>Contact<span class="hidden">}</span></a></li>
+                    <li><a href="#portfolio"><span class="hidden">{</span>Projects<span class="hidden">}</span></a></li>
+                    <li><a href="#contact"><span class="hidden">{</span>Contact<span class="hidden">}</span></a></li>
                 </ul>
             </nav>
             <div class="header-text">
@@ -113,7 +113,7 @@
 
 <!------------------------------ Contact ---------------------------------->
 
-<div class="contact">
+<div id="contact" class="contact">
     <div class="container">
         <div class="row">
             <div class="contact-left">
@@ -126,12 +126,13 @@
                 </div>
             </div>
             <div class="contact-right">
-                <form>
+                <form name="submit-to-google-sheet">
                     <input type="text" name="Name" placeholder="Your Name" required>
-                    <input type="email" name="email" placeholder="Your Email" required>
+                    <input type="email" name="Email" placeholder="Your Email" required>
                     <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
-                    <button type="submit">Submit</button>
+                    <button class="subbtn" type="submit">Submit</button>
                 </form>
+                <span id="msg"></span>
             </div>
         </div>
     </div>
@@ -167,6 +168,25 @@
             document.getElementById(tabname).classList.add("active-tab");
         }
 
+    </script>
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwVAVTj_zVLM8BZujBZN4Tqrh7QCyivlY4d1KyMS6l6LpQOquXgsNpdJwi3cYGnr64REQ/exec'
+        const form = document.forms['submit-to-google-sheet']
+        const msg = document.getElementById("msg")
+  
+        form.addEventListener('submit', e => {
+        e.preventDefault()
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                msg.innerHTML = "Message sent successfully"
+                setTimeout(function(){
+                    msg.innerHTML = ""
+                },5000)
+                form.reset()
+            })
+            .catch(error => console.error('Error!', error.message))
+        })
     </script>
 
 </body>
