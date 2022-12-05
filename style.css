@@ -238,7 +238,9 @@ nav ul li:hover .hidden {
     color: var(--secondary);
     margin-top: 40px;
     font-size: 18px;
+    justify-content: center;
 }
+
 
 .work-list {
     display: flex;
@@ -256,6 +258,20 @@ nav ul li:hover .hidden {
 }
 
 .work img {
+    width: 100%;
+    border-radius: 10px;
+    display: block;
+    transition: transform 0.5s;
+}
+
+.large-work {
+    display: flex;
+    flex-basis: 100%;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.large-work img {
     width: 100%;
     border-radius: 10px;
     display: block;
@@ -301,6 +317,10 @@ nav ul li:hover .hidden {
 }
 
 .work:hover img {
+    transform: scale(1.1);
+}
+
+.large-work:hover img {
     transform: scale(1.1);
 }
 
